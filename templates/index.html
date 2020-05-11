@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    {#    Bootsrtap CSS#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+{% load static %}
+<div class="container-fluid text-center">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Portfolio</a>
+        <form class="form-inline">
+            <a href="{% url 'blog_app:Blog' %}" class="btn btn-outline-danger">Blog</a>
+        </form>
+    </nav>
+    <img src="{% static 'portfolio/75348368.webp' %}" alt="img" height="150px" width="200px">
+
+    <h4>Hi There I'm Samrat. I'm trying to build a webpage using Django(Just for learning).</h4>
+
+    <h5>Here is Some of My Projects</h5>
+
+    <div class="row row-col-3">
+        {% for project in projects %}
+            <div class="col">
+                <h2> {{ project.title }}</h2>
+                <a href="{{ project.url }}">
+                    <img src="{{ project.image.url }}" height="250px" width="300px">
+                </a>
+                <p>{{ project.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

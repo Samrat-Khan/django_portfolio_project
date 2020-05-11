@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogs</title>
+    {#    Bootsrtap CSS#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-fluid text-center">
+
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Blog</a>
+        <form class="form-inline">
+            <a href="{% url 'Home' %}" class="btn btn-success">Portfolio</a>
+            {#      <a href="{% url 'blog_app:Blog' %}" class="btn btn-outline-danger">Blog</a>#}
+        </form>
+    </nav>
+    <div class="row row-cols-3">
+        {% for blog in blogs %}
+            <div class="col">
+                <a href="{% url 'blog_app:Details' blog.id %}">
+                    <h3>{{ blog.title }}</h3>
+                </a>
+                <h6>{{ blog.date }}</h6>
+                <img src="{{ blog.image.url }}" height="100px" width="150px" alt="img">
+
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+</body>
+</html>

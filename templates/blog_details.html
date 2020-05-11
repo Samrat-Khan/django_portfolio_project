@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Details</title>
+    {#    Bootsrtap CSS#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+
+<div class="container-fluid text-center">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Blog Details</a>
+        <form class="form-inline">
+            <a href="{% url 'Home' %}" class="btn btn-success">Portfolio</a>
+            <a href="{% url 'blog_app:Blog' %}" class="btn btn-outline-danger">Blog</a>
+        </form>
+    </nav>
+
+
+    <h2>
+        {{ detail.title }}
+    </h2>
+    <p>{{ detail.date }}</p>
+    <img src="{{ detail.image.url }}" alt="img" width="250px" height="200">
+    <br>
+    <br>
+    <br>
+    <p>
+        {{ detail.description }}
+    </p>
+
+    {% if detail.url %}
+        <a href="{{ detail.url }}">Click Here</a>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
